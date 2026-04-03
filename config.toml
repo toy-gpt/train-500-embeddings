@@ -1,0 +1,34 @@
+# config.toml
+# Inference configuration for e_infer.py.
+# These values control how the inference demo runs.
+# Override any value by passing a command-line argument to e_infer.py.
+
+# The corpus is intentionally structured,
+# repetitive enough to train on,
+# varied enough to be interesting.
+# For seeds, the most-seen adjacent pairs
+# will produce the most meaningful predictions.
+
+[infer]
+
+# The 2-token seed used to start text generation.
+# Must be tokens that appear together in the training corpus.
+# The model uses (seed_0, seed_1) as the initial context
+# so predictions are drawn from learned weights, not uniform defaults.
+seed_0 = "a"
+seed_1 = "model"
+
+# Alternatives to try:
+# seed_0 = "a"
+# seed_1 = "pipeline"   # 3 occurrences: is / transforms / improves
+
+# seed_0 = "data"
+# seed_1 = "analytics"  # 3 occurrences: is / turns / supports
+
+# Number of new tokens to generate after the start token.
+num_tokens = 10
+
+# Number of top predictions to display for the bootstrap context.
+# "top-k" means the k tokens with the highest predicted probability.
+# Higher values show more of the probability distribution.
+topk = 5

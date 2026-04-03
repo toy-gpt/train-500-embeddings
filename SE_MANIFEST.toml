@@ -1,0 +1,112 @@
+# ============================================================
+# SE_MANIFEST.toml (Repository Intent, Scope, and Role)
+# ============================================================
+
+schema = "se-manifest-1"
+schema_url = "https://github.com/structural-explainability/spec-se/blob/main/manifests/se-manifest-1.md"
+
+[meta]
+framework = "Structural Explainability"
+framework_url = "https://github.com/structural-explainability"
+framework_note = "Provides definitions and conventions for SE_MANIFEST semantics."
+description = "Declarative claim of repository intent, scope, and role."
+purpose = "To make explicit the boundaries, responsibilities, and expectations of this repository relative to others."
+keywords_note = "Keywords live only in CITATION.cff (canonical)."
+
+[repo]
+name = "train-500-embeddings"
+org = "toy-gpt"
+kind = "software"
+status = "academic"
+since = "2026"
+summary = "Toy language model training: embeddings-based next-token predictor using learned dense token vectors."
+
+[training]
+capability = "embeddings"
+context_window = 2
+architecture = "embedding lookup + linear layer + softmax"
+task = "next-token prediction"
+embedding_dim = 16
+parameters_total = 5488
+parameters_note = "embeddings=1792, linear_weights=3584, bias=112"
+
+[observation]
+corpus_id = "030"
+corpus_name = "analytics"
+corpus_path = "corpus/030_analytics.txt"
+corpus_note = "Technical micro-lessons; structured enough to produce meaningful embedding differentiation."
+
+[artifact]
+pretrained = true
+artifact_dir = "artifacts"
+artifacts_expected = [
+  "artifacts/00_meta.json",
+  "artifacts/01_vocabulary.csv",
+  "artifacts/02_model_weights.csv",
+  "artifacts/03_token_embeddings.csv",
+]
+evidence_expected = [
+  "outputs/train_log.csv",
+]
+artifact_note = "03_token_embeddings.csv contains learned embedding vectors (one row per vocab token). Different from 100-400 repos where this file is a derived 2D projection."
+
+[layer]
+space = "Machine Learning"
+role = "post-secondary-education"
+
+[depends]
+required = [
+  "python>=3.14",
+  "uv",
+  "git",
+]
+optional = [
+  "zensical",
+  "ruff",
+  "pyright",
+  "pytest",
+  "lychee",
+]
+
+[provides]
+artifacts = [
+  "ANNOTATIONS.md",
+  "CITATION.cff",
+  "LICENSE",
+  "README.md",
+  "SE_MANIFEST.toml",
+]
+
+[scope]
+includes = [
+  "basic Git workflows (clone, commit, push, pull)",
+  "create and run Python modules and scripts",
+  "use the standard Python main() execution pattern",
+  "use a local Python virtual environment (.venv) managed by uv",
+  "manage dependencies via pyproject.toml and uv",
+  "use external packages for logging and diagnostics",
+  "use basic variables, functions, and control flow in Python",
+  "use professional IDE-based development workflows",
+  "understand token embeddings as learned dense vector representations",
+  "understand backpropagation through an embedding layer",
+  "compare parameter efficiency of embeddings vs n-gram lookup tables",
+  "train a toy embeddings-based next-token prediction model on a declared corpus",
+  "export pretrained model artifacts including learned embedding vectors",
+]
+excludes = [
+  "production deployment systems",
+  "claims of semantic understanding or factual correctness",
+  "high-stakes decision support",
+  "training large-scale foundation models",
+  "attention mechanisms (introduced in train-600-attention)",
+  "temperature sampling or beam search",
+]
+
+[citation]
+cff = "CITATION.cff"
+preferred = "repo"
+
+[traceability]
+identifier_map = "none"
+series_prev = "train-400-context-3"
+series_next = "train-600-attention"

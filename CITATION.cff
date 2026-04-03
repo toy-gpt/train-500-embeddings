@@ -1,0 +1,66 @@
+# ============================================================
+# CITATION.cff (How to cite this project)
+# ============================================================
+
+cff-version: "1.2.0"
+type: software
+
+title: "Toy GPT: Embeddings-Based Next-Token Model trained on Analytics Corpus"
+version: "0.1.0"
+date-released: "2026-04-02"
+
+authors:
+  - family-names: Case
+    given-names: Denise M.
+    orcid: "https://orcid.org/0000-0001-6165-7389"
+    affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
+
+repository-code: "https://github.com/toy-gpt/train-500-embeddings"
+url: "https://toy-gpt.github.io/train-500-embeddings/"
+license: MIT
+
+abstract: >
+  A minimal, inspectable next-token prediction model using learned dense
+  token embeddings trained on a technical analytics micro-lessons corpus.
+  Introduces the embedding matrix as a first-class learned parameter,
+  replacing the n-gram lookup tables used in earlier repositories (100-400).
+  Backpropagation updates both the linear output layer and the embedding
+  vectors, enabling generalization to unseen token combinations.
+  Part of the Toy GPT educational series illustrating the progression
+  from n-gram models to neural language model architectures.
+
+keywords:
+  # model and architecture
+  - language-model
+  - next-token-prediction
+  - token-embeddings
+  - embedding-matrix
+  - backpropagation
+  - softmax-regression
+  - neural-language-model
+  - toy-model
+
+  # corpus
+  - analytics-corpus
+  - domain-corpus
+  - technical-micro-lessons
+
+  # education
+  - education
+  - teaching
+  - computer-science-education
+  - machine-learning-education
+  - natural-language-processing
+  - post-secondary
+
+  # practices and tools
+  - python
+  - git
+  - github
+  - uv
+  - ruff
+  - zensical
+  - reproducible-workflows
+  - pre-trained-artifacts
+
+message: "If using this work, please cite it as described in this file."
