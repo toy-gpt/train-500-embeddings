@@ -42,7 +42,7 @@ from toy_gpt_train.io_artifacts import (
     write_artifacts,
     write_training_log,
 )
-from toy_gpt_train.math_training import argmax, cross_entropy_loss
+from toy_gpt_train.math_training import argmax, cross_entropy_loss, softmax
 
 LOG: logging.Logger = get_logger("TRAIN", level="INFO")
 
@@ -165,9 +165,7 @@ def train_model(
                     scores[j] += val * model.weights[i][j]
 
             # 4. Softmax -> probabilities.
-            from toy_gpt_train.c_model import EmbeddingNextTokenModel as _M
-
-            probs: list[float] = _M._softmax(scores)
+            probs: list[float] = softmax(scores)
 
             # === LOSS AND ACCURACY ===
             total_loss += cross_entropy_loss(probs, target_id)

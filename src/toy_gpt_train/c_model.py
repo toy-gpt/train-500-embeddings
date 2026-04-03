@@ -26,11 +26,12 @@ Training is handled in d_train.py.
 """
 
 import logging
-import math
 import random
 from typing import Final
 
 from datafun_toolkit.logger import get_logger, log_header
+
+from toy_gpt_train.math_training import softmax
 
 LOG: logging.Logger = get_logger("MODEL", level="INFO")
 
@@ -142,15 +143,7 @@ class EmbeddingNextTokenModel:
 
         context_vec = self._concatenate(context_ids)
         scores = self._linear(context_vec)
-        return self._softmax(scores)
-
-    @staticmethod
-    def _softmax(scores: list[float]) -> list[float]:
-        """Convert raw scores to a probability distribution."""
-        max_score = max(scores)
-        exp_scores = [math.exp(s - max_score) for s in scores]
-        total = sum(exp_scores)
-        return [s / total for s in exp_scores]
+        return softmax(scores)
 
 
 def main() -> None:
