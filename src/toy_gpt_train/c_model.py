@@ -181,7 +181,7 @@ def main() -> None:
 
     LOG.info(f"Context tokens: {context_tokens}")
     LOG.info(f"Context IDs:    {context_ids}")
-    LOG.info("Top 5 predicted next tokens (untrained — random weights):")
+    LOG.info("Top 5 predicted next tokens (untrained, random weights):")
 
     indexed = sorted(enumerate(probs), key=lambda x: x[1], reverse=True)
     for rank, (idx, prob) in enumerate(indexed[:5], 1):

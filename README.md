@@ -245,13 +245,13 @@ After training with config.toml:
 
 ## Parameter count vs earlier models
 
-| Model          |   Vocab |  Parameters | Notes                 |
-| -------------- | ------: | ----------: | --------------------- |
-| Unigram        |     112 |         112 | one score per token   |
-| Bigram         |     112 |      12,544 | vocab²                |
-| Context-2      |     112 |   1,404,928 | vocab³                |
-| Context-3      |     112 | 157,351,936 | vocab⁴ — mostly zeros |
-| **Embeddings** | **112** |   **5,488** | 1,792 + 3,584 + 112   |
+| Model          |   Vocab |  Parameters | Notes                |
+| -------------- | ------: | ----------: | -------------------- |
+| Unigram        |     112 |         112 | one score per token  |
+| Bigram         |     112 |      12,544 | vocab²               |
+| Context-2      |     112 |   1,404,928 | vocab³               |
+| Context-3      |     112 | 157,351,936 | vocab⁴, mostly zeros |
+| **Embeddings** | **112** |   **5,488** | 1,792 + 3,584 + 112  |
 
 The embeddings model uses fewer parameters than
 the bigram model while operating with richer representation.
@@ -278,10 +278,10 @@ Training logs are written to `outputs/train_log.csv` (epoch, avg_loss, accuracy)
 
 ## Contents
 
-- `corpus/` — declared training corpus (`030_analytics.txt`)
-- `src/toy_gpt_train/` — tokenizer, vocabulary, model, training loop, inference, I/O utilities
-- `artifacts/` — committed pretrained artifacts for downstream use
-- `outputs/` — training logs (not committed)
+- `corpus/` - declared training corpus (`030_analytics.txt`)
+- `src/toy_gpt_train/` - tokenizer, vocabulary, model, training loop, inference, I/O utilities
+- `artifacts/` - committed pretrained artifacts for downstream use
+- `outputs/` - training logs (not committed)
 
 ## Scope
 
@@ -353,9 +353,9 @@ This repository commits pretrained artifacts so the client can run without retra
 
 ## Resources
 
-- [Toy GPT organization](https://github.com/toy-gpt) — all training repositories
-- [ANNOTATIONS.md](./ANNOTATIONS.md) — REQ/WHY/OBS annotations used
-- [SE_MANIFEST.toml](./SE_MANIFEST.toml) — project intent, scope, and declared corpus
+- [Toy GPT organization](https://github.com/toy-gpt) - all training repositories
+- [ANNOTATIONS.md](./ANNOTATIONS.md) - REQ/WHY/OBS annotations used
+- [SE_MANIFEST.toml](./SE_MANIFEST.toml) - project intent, scope, and declared corpus
 
 ## Citation
 

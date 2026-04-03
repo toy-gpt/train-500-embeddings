@@ -138,42 +138,31 @@ def load_vocabulary_csv(path: Path) -> ArtifactVocabulary:
     )
 
 
-def load_model_weights_csv(
-    path: Path, vocab_size: int, context_size: int, embedding_dim: int
-) -> list[list[float]]:
-    """Load 02_model_weights.csv -> linear layer weight matrix.
-
-    Expected shape: (context_size * embedding_dim) rows x vocab_size columns.
+def load_w_out_csv(path: Path, head_dim: int, vocab_size: int) -> list[list[float]]:
+    """Load 02_model_weights.csv -> W_out matrix.
+    Expected shape: head_dim rows x vocab_size columns.
     """
-    expected_rows = context_size * embedding_dim
     weights: list[list[float]] = []
-
     with path.open("r", encoding="utf-8", newline="") as f:
         reader = csv.reader(f)
         header = next(reader, None)
         if header is None:
             raise ValueError("Weights CSV is empty.")
-        if len(header) < 2 or header[0] != "input_token":
-            raise ValueError("Weights CSV must start with header 'input_token'.")
-
         num_outputs = len(header) - 1
         if num_outputs != vocab_size:
             raise ValueError(
                 f"Weights CSV output width mismatch. "
-                f"Expected {vocab_size} output columns but found {num_outputs}."
+                f"Expected {vocab_size} columns but found {num_outputs}."
             )
-
         for row in reader:
             if not row:
                 continue
             weights.append([float(x) for x in row[1:]])
-
-    if len(weights) != expected_rows:
+    if len(weights) != head_dim:
         raise ValueError(
             f"Weights CSV row count mismatch. "
-            f"Expected {expected_rows} rows but found {len(weights)}."
+            f"Expected {head_dim} rows but found {len(weights)}."
         )
-
     return weights
 
 
@@ -299,11 +288,10 @@ def main() -> None:
         embedding_dim=embedding_dim,
         context_size=context_size,
     )
-    model.weights = load_model_weights_csv(
+    model.weights = load_w_out_csv(
         WEIGHTS_PATH,
+        head_dim=context_size * embedding_dim,
         vocab_size=v,
-        context_size=context_size,
-        embedding_dim=embedding_dim,
     )
     model.embeddings = load_token_embeddings_csv(
         EMBEDDINGS_PATH,

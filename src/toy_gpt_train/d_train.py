@@ -13,7 +13,7 @@ Concepts:
 - backpropagation through embeddings: gradients flow from the linear layer
   back into the embedding vectors themselves, updating token representations.
 - embedding update: each context token's embedding vector is nudged in the
-  direction that reduces prediction error — this is how tokens learn to
+  direction that reduces prediction error. This is how tokens learn to
   occupy meaningful positions in vector space.
 
 Key difference from context-3 (d_train.py in train-400-context-3):

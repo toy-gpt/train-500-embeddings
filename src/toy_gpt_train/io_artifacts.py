@@ -432,13 +432,13 @@ def write_model_weights_csv(
 
 def write_token_embeddings_csv(
     path: Path,
-    vocab: VocabularyLike,  # ← add vocab parameter
-    model: ModelLike,  # ← was EmbeddingNextTokenModel
+    vocab: VocabularyLike,  # add vocab parameter
+    model: ModelLike,  # was EmbeddingNextTokenModel
 ) -> None:
     """Write 03_token_embeddings.csv.
 
     For models with learned embeddings (500+): writes the full embedding
-    vector for each vocabulary token — one row per token.
+    vector for each vocabulary token (one row per token).
 
     For earlier models (100-400): writes a 2D projection from model weights
     as a visualization artifact only.
