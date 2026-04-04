@@ -2,7 +2,7 @@
 # .pre-commit-config.yaml (Python Hygiene)
 # ============================================================
 # VARIANT: python-hygiene
-# SOURCE: https://github.com/toy-gpt/templates
+# SOURCE: https://github.com/denisecase/templates
 #
 # REQ: Professional Python projects SHOULD include a .pre-commit-config.yaml
 # to minimize git diffs and support collaboration.

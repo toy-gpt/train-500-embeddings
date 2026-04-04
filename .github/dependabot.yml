@@ -1,7 +1,7 @@
 # ============================================================
 # .github/dependabot.yml (Check for GitHub Actions updates)
 # ============================================================
-# SOURCE: https://github.com/toy-gpt/templates
+# SOURCE: https://github.com/denisecase/templates
 #
 # REQ.PROJECT: This repository SHOULD track GitHub Actions updates automatically.
 # WHY-FILE: GitHub Actions are executable dependencies and may receive security or behavior updates.
